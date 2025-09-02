@@ -121,7 +121,6 @@ const App = () => {
             {startLoading && <LoaderForm url={wopiUrl} token={token} />}
             <iframe
               title="Collabora Online Viewer"
-              id="collabora-online-viewer"
               name="collabora-online-viewer"
               allow="clipboard-read *; clipboard-write *; fullscreen *"
               className="w-full h-[80vh]"
