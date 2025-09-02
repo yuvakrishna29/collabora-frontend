@@ -32,10 +32,11 @@ const App = () => {
       return;
     }
 
-    const wopiSrc = `${locationOrigin}/wopi/files/1`;
+    // const wopiSrc = `${locationOrigin}/wopi/files/1`;
+    const wopiSrc = 'https://collabora-backend.b2yinfy.com/wopi/files/sample.docx'
     console.log(`wopiSrc: ${wopiSrc}`);
 
-    fetch(`/collaboraUrl?server=${wopiClientHost}`)
+    fetch(`https://collabora-backend.b2yinfy.com/collaboraUrl?server=${wopiClientHost}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
