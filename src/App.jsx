@@ -39,7 +39,7 @@ const App = () => {
     console.log(`locationOrigin: ${locationOrigin}, scheme: ${scheme}`);
 
     // Hardcoded default server address
-    const wopiClientHost = serverAddress;;
+    const wopiClientHost = 'https://collabora.b2yinfy.com/';
     
     // Validate scheme compatibility
     if (!wopiClientHost.startsWith(scheme + '://')) {
