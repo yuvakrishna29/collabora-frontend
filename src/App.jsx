@@ -9,6 +9,7 @@ const App = () => {
   const [wopiUrl, setWopiUrl] = useState('');
   const [token, setToken] = useState('');
   const fileInputRef = useRef(null);
+  const [serverAddress, setServerAddress] = useState(''); // Default server address
 
   const recentFiles = [
     { id: 1, name: 'Annual Report', type: 'pdf', lastOpened: 'Yesterday at 10:34 PM' },
@@ -38,7 +39,7 @@ const App = () => {
     console.log(`locationOrigin: ${locationOrigin}, scheme: ${scheme}`);
 
     // Hardcoded default server address
-    const wopiClientHost = 'https://collabora-backend.b2yinfy.com';
+    const wopiClientHost = serverAddress;;
     
     // Validate scheme compatibility
     if (!wopiClientHost.startsWith(scheme + '://')) {
@@ -47,10 +48,10 @@ const App = () => {
     }
 
     // Use a dynamic WOPI source based on the file or default for blank document
-    const wopiSrc = `${wopiClientHost}/wopi/files/${fileName}`;
+    const wopiSrc = 'https://collabora-backend.b2yinfy.com/wopi/files/TMS_Manual2.docx';
     console.log(`wopiSrc: ${wopiSrc}`);
 
-    fetch(`${wopiClientHost}/collaboraUrl?server=${wopiClientHost}`)
+    fetch(`https://collabora-backend.b2yinfy.com/collaboraUrl?server=${wopiClientHost}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -72,15 +73,17 @@ const App = () => {
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setShowCollabora(true); // Switch to Collabora component
+      setShowCollabora(true);
+      setServerAddress('https://collabora.b2yinfy.com');
       console.log('Uploaded file:', file.name);
-      handleSubmit(file.name); // Pass the uploaded file name to handleSubmit
+      handleSubmit(file.name);
     }
   };
 
   const handleCreateBlankDocument = () => {
-    setShowCollabora(true); // Switch to Collabora component
-    handleSubmit(); // Use default blank document
+    setShowCollabora(true);
+    setServerAddress('https://collabora.b2yinfy.com');
+    handleSubmit();
   };
 
   const handleUploadClick = () => {
