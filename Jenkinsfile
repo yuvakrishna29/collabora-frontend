@@ -84,7 +84,7 @@ pipeline {
                                 docker run -d \\
                                     --name ${IMAGE_NAME} \\
                                     -p ${env.SERVICE_PORT}:${env.SERVICE_PORT} \\
-                                    --network ecom-network \\
+                                    --network collabora-docker_collabora-network \\
                                     -e VITE_API_BASE_URL=${env.VITE_API_BASE_URL} \\
                                     ${DOCKER_IMAGE}:${params.DOCKER_TAG}
                             '
